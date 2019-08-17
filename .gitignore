@@ -1,0 +1,53 @@
+### Docker ###
+/bin
+/.go
+/.push-*
+/.container-*
+/.dockerfile-*
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+**/debug
+**/*.test
+**/*.out
+
+**/Payfazz.DB/obj
+**/Payfazz.DB/bin
+databases/Payfazz.DB/**/obj
+databases/Payfazz.DB/**/bin
+
+.idea
+.vscode
+
+### macOS ###
+*.DS_Store
+
+### Vim ###
+# swap
+.sw[a-p]
+.*.sw[a-p]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+
+# auto-generated tag files
+tags
+
+### VSCode ###
+.vscode
+vslaunch.json
+
+/.env
