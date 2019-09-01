@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"runtime/debug"
 
-	"github.com/payfazz/go-skeleton/internal/notif"
+	"github.com/aldyaz/csgo-roster/internal/notif"
 )
 
 // ErrorResponse represents the default error response
@@ -25,14 +25,14 @@ type Responder struct {
 func (r *Responder) JSON(w http.ResponseWriter, status int, data interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
-	json.NewEncoder(w).Encode(data)
+	_ = json.NewEncoder(w).Encode(data)
 }
 
 // HTML writes html http response
 func (r *Responder) HTML(w http.ResponseWriter, status int, data interface{}) {
 	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(status)
-	fmt.Fprint(w, data)
+	_, _ = fmt.Fprint(w, data)
 }
 
 // Error writes error http response
@@ -55,7 +55,7 @@ func (r *Responder) Error(w http.ResponseWriter, status int, err error) {
 	}
 
 	if status == http.StatusInternalServerError {
-		json.NewEncoder(w).Encode(ErrorResponse{
+		_ = json.NewEncoder(w).Encode(ErrorResponse{
 			Code:    errorCode,
 			Message: "Server error",
 		})
@@ -68,7 +68,7 @@ func (r *Responder) Error(w http.ResponseWriter, status int, err error) {
 			}
 		}
 	} else {
-		json.NewEncoder(w).Encode(ErrorResponse{
+		_ = json.NewEncoder(w).Encode(ErrorResponse{
 			Code:    errorCode,
 			Message: err.Error(),
 		})

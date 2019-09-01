@@ -64,8 +64,10 @@ func (sn *SlackNotifier) Notify(message string) error {
 	}`, sn.Channel, message))
 
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/chat.postMessage", apiURL), bytes.NewBuffer(payload))
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", sn.Token))
-	req.Header.Set("Content-type", "application/json")
+	if req != nil {
+		req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", sn.Token))
+		req.Header.Set("Content-type", "application/json")
+	}
 	if err != nil {
 		return err
 	}
