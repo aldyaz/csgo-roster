@@ -9,4 +9,8 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 go install ./cmd/app
 
+FROM alpine
+RUN apk add --no-cache ca-certificates git
+COPY --from=builder /go/bin /bin
+USER nobody:nobody
 ENTRYPOINT [ "/bin/csgo-roster" ]
