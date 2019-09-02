@@ -12,9 +12,6 @@ build:
 build-linux:
 	GOOS=linux CGO_ENABLED=0 GOARCH=${ARCH} go install ./cmd/...
 
-docker-build: Dockerfile
-    echo "Building the $(IMAGE) docker container.."
-    docker build --label "version=$(VERSION)" -t $(IMAGE):$(VERSION) .
-
-docker-run:
-    docker run -it -p 8080:8080 --rm $(IMAGE):$(VERSION)
+docker: Dockerfile
+	echo "Building the $(IMAGE) container..."
+	docker build --label "version=$(VERSION)" -t $(IMAGE):$(VERSION) .
