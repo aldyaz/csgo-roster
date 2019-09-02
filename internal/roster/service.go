@@ -1,17 +1,17 @@
 package roster
 
 import (
-	"github.com/aldyaz/csgo-roster/internal/data/roster"
+	"github.com/aldyaz/csgo-roster/internal/data/entity"
 )
 
 type IService interface {
-	GetRosters() roster.RosterList
+	GetRosters() entity.RosterList
 }
 
 type Service struct{}
 
-func (s *Service) GetRosters() roster.RosterList {
-	data := []*roster.Roster{
+func (s *Service) GetRosters() entity.RosterList {
+	data := []*entity.Roster{
 		{
 			ID:   0,
 			Name: "Stewie2k",
@@ -28,7 +28,7 @@ func (s *Service) GetRosters() roster.RosterList {
 			Role: "AWP",
 		},
 	}
-	return roster.RosterList{Data: data}
+	return entity.RosterList{Data: data}
 }
 
 func NewService() *Service {

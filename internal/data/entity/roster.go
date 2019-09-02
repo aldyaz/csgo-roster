@@ -1,4 +1,4 @@
-package roster
+package entity
 
 type RosterList struct {
 	Data []*Roster `json:"data"`
